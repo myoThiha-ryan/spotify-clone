@@ -1,13 +1,23 @@
 import express from "express";
 import dotenv from "dotenv";
-import userRoute from "./routes/user.route.js"; // importing route from other files
+import userRoutes from "./routes/user.route.js"; // importing route from other files
+import adminRoutes from "./routes/admin.route.js"; // importing route from other files
+import authRoutes from "./routes/auth.route.js"; // importing route from other files
+import songRoutes from "./routes/song.route.js"; // importing route from other files
+import albumRoutes from "./routes/album.route.js"; // importing route from other files
+import statRoutes from "./routes/stats.route.js"; // importing route from other files
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
 
-app.use("/user", userRoute);
+app.use("/api/users", userRoutes);
+app.use("/api/admins", adminRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/songs", songRoutes);
+app.use("/api/albums", albumRoutes);
+app.use("/api/stats", statRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on port: " + PORT);
